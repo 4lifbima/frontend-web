@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Brand Identity Tokens (DESIGN.md) */
+  --color-primary: #2b39ff;
+  --color-primary-hover: #202edb;
+  --color-primary-soft: #eef0ff;
+  --color-accent: #faf628;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f8f9fc;
+  --color-ink: #171717;
+  --color-muted: #737373;
+  --color-border-base: #e5e7eb;
+
+  /* Semantic Status */
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    scrollbar-width: none;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #171717;
+    overflow-x: clip;
+  }
+}
+
+/* Respect reduced motion across all transitions (DESIGN.md Section 15) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
