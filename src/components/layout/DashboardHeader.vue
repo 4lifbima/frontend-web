@@ -51,11 +51,8 @@ const emit = defineEmits(['toggle-sidebar', 'logout'])
 
     <div class="flex items-center gap-2.5 shrink-0">
 
-      <div class="hidden md:flex items-center gap-2 rounded-lg border border-[#e4e4e7] bg-[#fafafa] px-2.5 py-1.5">
-        <Icon icon="solar:shield-check-linear" class="h-4 w-4 text-[#2b39ff]" />
-        <span class="text-xs font-medium text-[#171717]">
-          {{ user?.name || 'Administrator' }}
-        </span>
+      <div class="hidden md:flex items-center gap-2 rounded-xl border border-[#e4e4e7] bg-[#fafafa] px-2.5 py-1.5">
+        <img src="/alifbims.png" class="object-cover w-8 rounded-full border border-[#2b39ff]" />
       </div>
     </div>
   </header>

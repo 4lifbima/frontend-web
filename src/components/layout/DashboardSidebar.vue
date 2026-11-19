@@ -88,7 +88,7 @@ const navItems = [
             :class="[
               'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
               route.name === item.name
-                ? 'bg-[#eef0ff] text-[#2b39ff]'
+                ? 'bg-[#2b39ff] text-white'
                 : 'text-[#52525b] hover:bg-[#f4f4f5] hover:text-[#09090b]',
             ]"
             @click="emit('close')"
