@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import authService from '@/services/authService'
+import { clearAdminToken, getAdminToken, isCrossOriginBackend } from '@/services/api'
 import { extractApiErrors } from '@/utils/formatters'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -12,12 +13,20 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function initAuth() {
     if (initialized.value) return
+
+    if (isCrossOriginBackend && !getAdminToken()) {
+      user.value = null
+      initialized.value = true
+      return
+    }
+
     loading.value = true
     try {
       const data = await authService.fetchMe()
       user.value = data.user
     } catch {
       user.value = null
+      clearAdminToken()
     } finally {
       initialized.value = true
       loading.value = false
@@ -45,6 +54,7 @@ export const useAuthStore = defineStore('auth', () => {
       await authService.logout()
     } finally {
       user.value = null
+      clearAdminToken()
       initialized.value = true
       loading.value = false
     }
@@ -52,6 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   function clearAuth() {
     user.value = null
+    clearAdminToken()
     initialized.value = true
   }
 
@@ -66,4 +77,3 @@ export const useAuthStore = defineStore('auth', () => {
     clearAuth,
   }
 })
-

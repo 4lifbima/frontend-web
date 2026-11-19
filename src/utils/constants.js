@@ -3,4 +3,4 @@ export const ALLOWED_IMAGE_EXTENSIONS_LABEL = 'JPG, JPEG, PNG, atau WebP'
 export const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024
 export const MAX_IMAGE_SIZE_LABEL = '5 MB'
 export const VISITOR_TOKEN_STORAGE_KEY = 'uk_visitor_token'
-
+export const ADMIN_TOKEN_STORAGE_KEY = 'uk_admin_token'
